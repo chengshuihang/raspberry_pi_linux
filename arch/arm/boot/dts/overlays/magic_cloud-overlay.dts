@@ -51,7 +51,7 @@
 				pinctrl-0 = <&mc0_err_pins>, <&mc0_ready_pins>;
 				interrupt-parent = <&gpio>;
 				interrupts = <27 IRQ_TYPE_EDGE_BOTH>;
-				dmas = <&dma 2>, <&dma 3>;
+				dmas = <&dma 6>, <&dma 7>;
 				dma-names = "tx", "rx";
 			};
 		};
