@@ -9,46 +9,39 @@
     compatible = "brcm,bcm2835";
 
 	fragment@0 {
-		target = <&spidev0>;
-		__dormant__ {
-			status = "disabled";
-		};
-	};
-
-	fragment@1 {
 		target = <&spi0>;
 		__dormant__ {
 			status = "okay";
 		};
 	};
 
-	fragment@2 {
+	fragment@1 {
 		target = <&gpio>;
 		__overlay__ {
-			mc0_err_pins: mc0_err_pins {
+			spimc0_err_pins: mc0_err_pins {
 				brcm,pins = <17>;
 				brcm,function = <BCM2835_FSEL_GPIO_OUT>;
 			};
-			mc0_ready_pins: mc0_ready_pins {
+			spimc0_ready_pins: mc0_ready_pins {
 				brcm,pins = <27>;
 				brcm,function = <BCM2835_FSEL_GPIO_IN>;
 			};
 		};
 	};
 
-    mc_frag: fragment@3 {
-		target = <&spidev0>;
+    spimc_frag: fragment@2 {
+		target = <&spi0>;
 		__overlay__ {
 			status = "okay";
 			#address-cells = <1>;
 			#size-cells = <0>;
 
-			mc0: stm32h743@0 {
+			spimc0: spimc0@0 {
 				compatible = "firecloudtech,mc_stm32h743";
                 spi-max-frequency = <10000000>;
 				reg = <0>;
 				pinctrl-names = "default";
-				pinctrl-0 = <&mc0_err_pins>, <&mc0_ready_pins>;
+				pinctrl-0 = <&spimc0_err_pins>, <&spimc0_ready_pins>;
 				interrupt-parent = <&gpio>;
 				interrupts = <27 IRQ_TYPE_EDGE_BOTH>;
 				dmas = <&dma 6>, <&dma 7>;
