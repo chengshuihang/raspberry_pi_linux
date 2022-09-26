@@ -18,11 +18,11 @@
 	fragment@1 {
 		target = <&gpio>;
 		__overlay__ {
-			spimc0_err_pins: mc0_err_pins {
+			spimc0_err_pin: mc0_err_pin {
 				brcm,pins = <17>;
 				brcm,function = <BCM2835_FSEL_GPIO_OUT>;
 			};
-			spimc0_ready_pins: mc0_ready_pins {
+			spimc0_ready_pin: mc0_ready_pin {
 				brcm,pins = <27>;
 				brcm,function = <BCM2835_FSEL_GPIO_IN>;
 			};
@@ -42,8 +42,8 @@
 				reg = <0>;
 				//spi-cpol;
 				//spi-cpha;
-				pinctrl-names = "default";
-				pinctrl-0 = <&spimc0_err_pins>, <&spimc0_ready_pins>;
+				pinctrl-names = "spimc_err_pin", "spimc_ready_pin";
+				pinctrl-0 = <&spimc0_err_pin>, <&spimc0_ready_pin>;
 				interrupt-parent = <&gpio>;
 				interrupts = <27 IRQ_TYPE_EDGE_BOTH>;
 				dmas = <&dma 6>, <&dma 7>;
