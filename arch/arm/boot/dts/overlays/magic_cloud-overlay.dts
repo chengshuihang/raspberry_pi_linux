@@ -46,8 +46,8 @@
 				pinctrl-0 = <&spimc0_err_pin>, <&spimc0_ready_pin>;
 				interrupt-parent = <&gpio>;
 				interrupts = <27 IRQ_TYPE_EDGE_BOTH>;
-				//dmas = <&dma 6>, <&dma 7>;
-				//dma-names = "tx", "rx";
+				dmas = <&dma 6>, <&dma 7>;
+				dma-names = "tx", "rx";
 			};
 		};
 	};
